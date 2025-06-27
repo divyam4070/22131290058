@@ -19,27 +19,41 @@ This project is a **React-based URL Shortener Web Application** that allows user
 ## Folder Structure (Simplified)
 
 22131290058/
-│
-├── frontend/ # React app code
-│ ├── src/
-│ │ ├── components/
-│ │ │ ├── HomePage.js # URL shortener input & creation page
-│ │ │ ├── RedirectPage.js # Handles short URL redirection
-│ │ │ ├── StatsPage.js # Displays all shortened URLs & stats
-│ │ │ ├── ShortUrlCard.js # Reusable card component to display URL & clicks
-│ │ ├── services/
-│ │ │ ├── logger.js # Logging Middleware for API log calls
-│ │ │ ├── urlService.js # (Optional) URL management functions
-│ │ └── App.js # React Router & app entry
-│
-├── backend/ # (Optional backend for future extension)
-│
-├── logging middleware/ # Reusable logging package code
-│
+├── frontend/
+│   ├── .gitignore
+│   ├── package-lock.json
+│   ├── package.json
+│   ├── public/
+│   │   ├── favicon.ico
+│   │   ├── index.html
+│   │   ├── logo192.png
+│   │   ├── logo512.png
+│   │   ├── manifest.json
+│   │   └── robots.txt
+│   ├── README.md
+│   └── src/
+│       ├── App.css
+│       ├── App.js
+│       ├── App.test.js
+│       ├── components/
+│       │   ├── HomePage.js
+│       │   ├── RedirectPage.js
+│       │   ├── ShortUrlCard.js
+│       │   └── StatsPage.js
+│       ├── index.css
+│       ├── index.js
+│       ├── logo.svg
+│       ├── reportWebVitals.js
+│       ├── services/
+│       │   └── logger.js
+│       └── setupTests.js
+└── Logging Middleware/
+    ├── .gitignore
+    ├── logger.js
+    ├── package-lock.json
+    ├── package.json
+    └── test.js
 
-markdown
-Copy
-Edit
 
 ---
 

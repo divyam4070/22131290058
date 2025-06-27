@@ -16,44 +16,7 @@ This project is a **React-based URL Shortener Web Application** that allows user
 - **Logging Middleware Integration:** All important actions (URL creation, redirections, errors) are logged to a remote logging API using a reusable logging function.
 
 
-## Folder Structure (Simplified)
-
-22131290058/
-├── frontend/
-│   ├── .gitignore
-│   ├── package-lock.json
-│   ├── package.json
-│   ├── public/
-│   │   ├── favicon.ico
-│   │   ├── index.html
-│   │   ├── logo192.png
-│   │   ├── logo512.png
-│   │   ├── manifest.json
-│   │   └── robots.txt
-│   ├── README.md
-│   └── src/
-│       ├── App.css
-│       ├── App.js
-│       ├── App.test.js
-│       ├── components/
-│       │   ├── HomePage.js
-│       │   ├── RedirectPage.js
-│       │   ├── ShortUrlCard.js
-│       │   └── StatsPage.js
-│       ├── index.css
-│       ├── index.js
-│       ├── logo.svg
-│       ├── reportWebVitals.js
-│       ├── services/
-│       │   └── logger.js
-│       └── setupTests.js
-└── Logging Middleware/
-    ├── .gitignore
-    ├── logger.js
-    ├── package-lock.json
-    ├── package.json
-    └── test.js
-
+---
 
 
 

@@ -1,70 +1,85 @@
-# Getting Started with Create React App
+# React URL Shortener Web App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Project Overview
+This project is a **React-based URL Shortener Web Application** that allows users to shorten URLs, optionally provide custom shortcodes and validity periods, and track click statistics — all managed entirely on the client-side using browser localStorage. It integrates a custom **Logging Middleware** to track key operations and errors, ensuring extensive logging without relying on console logs.
 
-## Available Scripts
+---
 
-In the project directory, you can run:
+## Features
 
-### `npm start`
+- **Shorten up to 5 URLs concurrently:** Users can enter multiple URLs at once.
+- **Custom shortcodes:** Optionally specify your own shortcode (validated for uniqueness).
+- **Validity period:** Specify how long the short link is valid (defaults to 30 minutes).
+- **Client-side routing and redirection:** Short URLs redirect users to the original URL using React Router.
+- **Statistics Page:** View all shortened URLs with creation date, expiry date, total clicks, and detailed click information including timestamps and sources.
+- **Robust client-side validation and error handling:** Malformed URLs, shortcode collisions, and expired links are handled gracefully.
+- **Logging Middleware Integration:** All important actions (URL creation, redirections, errors) are logged to a remote logging API using a reusable logging function.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+---
+## Folder Structure (Simplified)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+22131290058/
+│
+├── frontend/ # React app code
+│ ├── src/
+│ │ ├── components/
+│ │ │ ├── HomePage.js # URL shortener input & creation page
+│ │ │ ├── RedirectPage.js # Handles short URL redirection
+│ │ │ ├── StatsPage.js # Displays all shortened URLs & stats
+│ │ │ ├── ShortUrlCard.js # Reusable card component to display URL & clicks
+│ │ ├── services/
+│ │ │ ├── logger.js # Logging Middleware for API log calls
+│ │ │ ├── urlService.js # (Optional) URL management functions
+│ │ └── App.js # React Router & app entry
+│
+├── backend/ # (Optional backend for future extension)
+│
+├── logging middleware/ # Reusable logging package code
+│
 
-### `npm test`
+markdown
+Copy
+Edit
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+---
 
-### `npm run build`
+## How It Works
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### URL Shortening
+- Users enter one or more URLs (up to 5) on the **Home Page**, along with optional shortcode and validity time.
+- The app validates inputs (URL format, shortcode uniqueness).
+- If no shortcode is provided, a unique one is generated.
+- Each shortened URL is saved to `localStorage` with metadata: original URL, shortcode, creation time, expiry time, and clicks array.
+- The shortened URL is shown with expiry info.
+- Each URL creation event is logged using the Logging Middleware.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Redirection
+- When users visit a short URL (e.g., `http://localhost:3000/abc123`), **RedirectPage** looks up the shortcode in `localStorage`.
+- If found and not expired, the app logs the click (timestamp, referrer source).
+- User is redirected to the original URL.
+- If expired or not found, an error message is shown.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Statistics
+- The **Stats Page** displays all shortened URLs saved in `localStorage`.
+- For each URL, it shows:
+  - Short URL link
+  - Creation and expiry dates
+  - Total number of clicks
+  - Detailed click list (timestamp, source, location if available)
+- Users can expand/collapse click details.
+- Visiting the Stats Page triggers a log event.
 
-### `npm run eject`
+---
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Getting Started
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Prerequisites
+- Node.js & npm installed
+- Basic familiarity with React
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### Installation
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+```bash
+cd frontend
+npm install
+npm start

@@ -15,7 +15,7 @@ This project is a **React-based URL Shortener Web Application** that allows user
 - **Robust client-side validation and error handling:** Malformed URLs, shortcode collisions, and expired links are handled gracefully.
 - **Logging Middleware Integration:** All important actions (URL creation, redirections, errors) are logged to a remote logging API using a reusable logging function.
 
----
+
 ## Folder Structure (Simplified)
 
 22131290058/
@@ -55,7 +55,7 @@ This project is a **React-based URL Shortener Web Application** that allows user
     └── test.js
 
 
----
+
 
 ## How It Works
 
